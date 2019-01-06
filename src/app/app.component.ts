@@ -11,6 +11,10 @@ import { template } from "@angular/core/src/render3";
       <li><a class='nav-link' [routerLink]="['/products']">Product List</a></li>
     </ul>
   </nav>
+
+  <div class='container'>
+    <router-outlet></router-outlet>
+  </div>
   `
 })
 export class AppComponent {
