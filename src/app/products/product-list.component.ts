@@ -11,15 +11,20 @@ export class ProductListComponent implements OnInit {
    
    
     ngOnInit(): void {
-        this.products = this.productService.getProducts();
-        this.filteredProducts = this.products;
+        this.productService.getProducts().subscribe(
+            products => {
+                this.products = products,
+                this.filteredProducts = this.products;
+            },
+            error => this.errorMessage = <any> error
+        )
     }
       
     pageTitle: string = 'Product List';
     imageWidth: number= 50;
     imageMargin: number = 2;
     showImage: boolean = false;
-    
+    errorMessage: string = "error";
     _listFilter: string = 'cart';
 
     get listFilter(): string {
